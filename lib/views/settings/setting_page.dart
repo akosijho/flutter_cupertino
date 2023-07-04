@@ -28,17 +28,38 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(
                 height: 20,
               ),
-              CupertinoFormSection(header: const Text('Account Details'), children: [
-                CupertinoFormRow(
-                    prefix: const Text('Chat Backup'),
-                    child: CupertinoSwitch(
-                        value: chatBackup,
-                        onChanged: (value) {
-                          setState(() {
-                            chatBackup = !chatBackup;
-                          });
-                        }))
-              ])
+              CupertinoFormSection(
+                  header: const Text('Account Details'),
+                  children: [
+                    CupertinoFormRow(
+                        prefix: const Text('Chat Backup'),
+                        child: CupertinoSwitch(
+                            value: chatBackup,
+                            onChanged: (value) {
+                              setState(() {
+                                chatBackup = !chatBackup;
+                              });
+                            }))
+                  ]),
+              Center(
+                child: CupertinoButton(
+                  child: const Text('Chat Wallpaper'),
+                  onPressed: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) => CupertinoActionSheet(
+                        title: const Text('Set Wallpaper Theme'),
+                        actions: [
+                          CupertinoActionSheetAction(
+                              onPressed: () {}, child: const Text('Light')),
+                          CupertinoActionSheetAction(
+                              onPressed: () {}, child: const Text('Dark'))
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              )
             ],
           ),
         ));
