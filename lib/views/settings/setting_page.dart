@@ -59,6 +59,34 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                 ),
+              ),
+              Center(
+                child: CupertinoButton(
+                  child: const Text('Delete all chet'),
+                  onPressed: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                              title: const Text('Delete all chat'),
+                              content: const Text('Proceed with deleting all chat?'),
+                              actions: [
+                                CupertinoDialogAction(
+                                  child: const Text('No'),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                CupertinoDialogAction(
+                                  isDestructiveAction: true,
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Yes'),
+                                )
+                              ],
+                            ));
+                  },
+                ),
               )
             ],
           ),
