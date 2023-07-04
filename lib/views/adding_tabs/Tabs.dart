@@ -1,6 +1,6 @@
 /*Creating tabs with CupertinoTabScaffold*/
 import 'package:cupertino_app/models/user.dart';
-import 'package:cupertino_app/views/widgets/user_tile.dart';
+import 'package:cupertino_app/views/chat/chat_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class Tabs extends StatefulWidget {
@@ -38,39 +38,9 @@ class _TabsState extends State<Tabs> {
               break;
             case 1:
               returnValue = CupertinoTabView(
-                builder: (context) => CustomScrollView(
-                  slivers: [
-                    CupertinoSliverNavigationBar(
-                      largeTitle: const Text('Chats'),
-                      leading: const Text(
-                        'Edit',
-                        style: TextStyle(color: CupertinoColors.link),
-                      ),
-                      middle: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          CupertinoActivityIndicator(),
-                          SizedBox(width: 8),
-                          Text('Waiting for network')
-                        ],
-                      ),
-                    ),
-                    SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        childAspectRatio: 5,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return UserTile(user: widget._filteredUsers[index]);
-                        },
-                        childCount: widget._filteredUsers.length,
-                      ),
-                    )
-                  ],
-                ),
-              );
+                  builder: (context) => ChatPage(
+                        users: widget._filteredUsers,
+                      ));
               break;
             case 2:
               returnValue = CupertinoTabView(
