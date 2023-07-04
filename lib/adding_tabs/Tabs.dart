@@ -34,10 +34,22 @@ class _TabsState extends State<Tabs> {
               break;
             case 1:
               returnValue = CupertinoTabView(
-                builder: (context) => const CustomScrollView(
+                builder: (context) => CustomScrollView(
                   slivers: [
                     CupertinoSliverNavigationBar(
-                      largeTitle: Text('Chats'),
+                      largeTitle: const Text('Chats'),
+                      leading: const Text(
+                        'Edit',
+                        style: TextStyle(color: CupertinoColors.link),
+                      ),
+                      middle: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          CupertinoActivityIndicator(),
+                          SizedBox(width: 8),
+                          Text('Waiting for network')
+                        ],
+                      ),
                     )
                   ],
                 ),
