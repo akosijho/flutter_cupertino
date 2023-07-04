@@ -1,8 +1,12 @@
 /*Creating tabs with CupertinoTabScaffold*/
+import 'package:cupertino_app/models/user.dart';
+import 'package:cupertino_app/views/widgets/user_tile.dart';
 import 'package:flutter/cupertino.dart';
 
 class Tabs extends StatefulWidget {
-  const Tabs({super.key});
+  Tabs({super.key});
+
+  final List<User> _filteredUsers = users;
 
   @override
   State<Tabs> createState() => _TabsState();
@@ -49,6 +53,19 @@ class _TabsState extends State<Tabs> {
                           SizedBox(width: 8),
                           Text('Waiting for network')
                         ],
+                      ),
+                    ),
+                    SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        childAspectRatio: 5,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return UserTile(user: widget._filteredUsers[index]);
+                        },
+                        childCount: widget._filteredUsers.length,
                       ),
                     )
                   ],
