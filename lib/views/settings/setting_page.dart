@@ -10,6 +10,10 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool chatBackup = true;
 
+  /*
+  * This method is for showing action sheet for cupertino
+  * */
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
