@@ -34,7 +34,13 @@ class _TabsState extends State<Tabs> {
               break;
             case 1:
               returnValue = CupertinoTabView(
-                builder: (context) => const Placeholder(),
+                builder: (context) => const CustomScrollView(
+                  slivers: [
+                    CupertinoSliverNavigationBar(
+                      largeTitle: Text('Chats'),
+                    )
+                  ],
+                ),
               );
               break;
             case 2:
