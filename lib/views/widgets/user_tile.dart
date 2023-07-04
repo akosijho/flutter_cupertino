@@ -1,5 +1,6 @@
 import 'package:cupertino_app/models/user.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class UserTile extends StatelessWidget {
   const UserTile({super.key, required this.user});
@@ -8,14 +9,33 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoListTile(
-        leading: Container(
-          width: 32,
-          decoration: BoxDecoration(
-            color: user.color,
-            shape: BoxShape.circle
+    return Container(
+      //padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      child: Row(
+        children: <Widget>[
+          CircleAvatar(
+            backgroundColor: user.color,
+            radius: 30,
           ),
-        ),
-        title: Text(user.name));
+          const SizedBox(
+            width: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 12,),
+              Text(
+                user.name,
+                style: const TextStyle(
+                  color: CupertinoColors.black,
+                  fontSize: 25,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
