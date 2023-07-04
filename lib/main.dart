@@ -1,4 +1,4 @@
-import 'package:cupertino_app/adding_tabs/Tabs.dart';
+import 'package:cupertino_app/views/adding_tabs/Tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
