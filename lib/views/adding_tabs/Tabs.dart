@@ -1,13 +1,10 @@
 /*Creating tabs with CupertinoTabScaffold*/
-import 'package:cupertino_app/models/user.dart';
 import 'package:cupertino_app/views/chat/chat_page.dart';
 import 'package:cupertino_app/views/settings/setting_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class Tabs extends StatefulWidget {
   Tabs({super.key});
-
-  final List<User> _filteredUsers = users;
 
   @override
   State<Tabs> createState() => _TabsState();
@@ -38,10 +35,8 @@ class _TabsState extends State<Tabs> {
               });
               break;
             case 1:
-              returnValue = CupertinoTabView(
-                  builder: (context) => ChatPage(
-                        users: widget._filteredUsers,
-                      ));
+              returnValue =
+                  CupertinoTabView(builder: (context) => const ChatPage());
               break;
             case 2:
               returnValue = CupertinoTabView(
