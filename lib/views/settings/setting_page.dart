@@ -8,11 +8,23 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  DateTime date =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   bool chatBackup = true;
 
   /*
   * This method is for showing action sheet for cupertino
   * */
+  _showDialog(Widget child) {
+    return showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          return SizedBox(
+            height: 320,
+            child: child,
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +80,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                               title: const Text('Delete all chat'),
-                              content: const Text('Proceed with deleting all chat?'),
+                              content:
+                                  const Text('Proceed with deleting all chat?'),
                               actions: [
                                 CupertinoDialogAction(
                                   child: const Text('No'),
@@ -87,7 +100,22 @@ class _SettingsPageState extends State<SettingsPage> {
                             ));
                   },
                 ),
-              )
+              ),
+              Center(
+                  child: CupertinoButton(
+                //  Display a cupertino cupertino date picker in date picker mode
+                onPressed: () {
+                  _showDialog(CupertinoDatePicker(
+                      backgroundColor: CupertinoColors.white,
+                      use24hFormat: true,
+                      mode: CupertinoDatePickerMode.date,
+                      initialDateTime: date,
+                      onDateTimeChanged: (DateTime newDate) {
+                        setState(() => date = newDate);
+                      }));
+                },
+                child: Text("${date.month}-${date.day}-${date.year}"),
+              ))
             ],
           ),
         ));
