@@ -26,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(
-                height: 20,
+                height: 48,
               ),
               CupertinoFormSection(
                   header: const Text('Account Details'),
@@ -62,7 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               Center(
                 child: CupertinoButton(
-                  child: const Text('Delete all chet'),
+                  child: const Text('Delete all chat'),
                   onPressed: () {
                     showCupertinoDialog(
                         context: context,
